@@ -1,0 +1,29 @@
+{
+  "name": "studentperformanceanalyzer",
+  "version": "1.0.0",
+  "description": "Monitoring student performance is a critical component of effective teaching and learning, yet both professors and students often lack accessible tools to track academic progress. Professors face difficulties in evaluating the performance trends of multiple students, while students are unable to clearly assess whether they are progressing in the right direction. This gap leads to delayed interventions, limited self-awareness, and reduced academic improvement.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ijk037/StudentPerformanceAnalyzer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ijk037/StudentPerformanceAnalyzer/issues"
+  },
+  "homepage": "https://github.com/ijk037/StudentPerformanceAnalyzer#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.20.0"
+  }
+}
