@@ -1,11 +1,9 @@
-// backend/routes/studentRoutes.js
-const express = require("express");
-const router = express.Router();
-const auth = require("../middleware/auth");
-const ctl = require("../controllers/studentController");
+const router = require("express").Router();
+const Student = require("../models/Student");
 
-// Protected routes for student
-router.post("/update", auth, ctl.updatePerformance);
-router.post("/predict", auth, ctl.predictPerformance);
+router.get("/:email", async (req, res) => {
+  const student = await Student.findOne({ email: req.params.email });
+  res.json(student);
+});
 
 module.exports = router;

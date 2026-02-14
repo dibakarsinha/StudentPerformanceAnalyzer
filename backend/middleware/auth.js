@@ -1,21 +1,21 @@
-// backend/middleware/auth.js
 const jwt = require("jsonwebtoken");
-require("dotenv").config();
 
-const SECRET = process.env.JWT_SECRET || "pbl_secret";
+module.exports = (role) => {
+  return (req, res, next) => {
+    const token = req.headers.authorization;
+    if (!token) return res.status(401).json({ msg: "No token" });
 
-module.exports = (req, res, next) => {
-  // Accept both "Bearer <token>" and raw token in Authorization header
-  const raw = req.headers["authorization"] || req.headers["Authorization"];
-  if (!raw) return res.status(401).json({ error: "No token provided" });
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      req.user = decoded;
 
-  const token = raw.startsWith("Bearer ") ? raw.split(" ")[1] : raw;
+      if (role && decoded.role !== role) {
+        return res.status(403).json({ msg: "Access denied" });
+      }
 
-  try {
-    const decoded = jwt.verify(token, SECRET);
-    req.user = decoded; // { id, role, iat, exp }
-    next();
-  } catch (err) {
-    return res.status(401).json({ error: "Invalid or expired token" });
-  }
+      next();
+    } catch {
+      res.status(401).json({ msg: "Invalid token" });
+    }
+  };
 };

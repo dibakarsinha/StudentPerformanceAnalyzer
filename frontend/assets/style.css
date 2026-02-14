@@ -1,47 +1,105 @@
 body {
+  margin: 0;
   font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #667eea, #764ba2);
+  color: #333;
+}
+
+.container {
+  width: 85%;
+  max-width: 1000px;
+  margin: 40px auto;
   text-align: center;
-  background: #f5f6f7;
-  color: #111;
 }
 
-h1, h2 {
-  margin-top: 18px;
-}
-
-.box {
-  margin: 18px auto;
-  padding: 18px;
-  width: 360px;
-  max-width: 94%;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(30,30,30,0.12);
-  text-align: left;
-}
-
-input, select, button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  box-sizing: border-box;
-  border-radius: 6px;
-  border: 1px solid #ddd;
-  font-size: 1rem;
-}
-
-label { font-size: 0.95rem; color: #333; }
-
-button {
-  background: #39a84a;
+h1 {
   color: white;
-  border: none;
-  cursor: pointer;
+  margin-bottom: 30px;
 }
 
-button:hover { opacity: 0.95; }
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
 
-a { color: #333; text-decoration: none; font-size: 0.9rem; }
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
 
-small.note { color: #666; }
+.stat-box {
+  flex: 1;
+  margin: 0 10px;
+  padding: 20px;
+  background: #f4f6ff;
+  border-radius: 10px;
+}
+
+.stat-box h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.stat-box p {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 10px 0 0 0;
+}
+
+.highlight {
+  background: #667eea;
+  color: white;
+}
+
+.charts {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+canvas {
+  background: #fafafa;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.btn {
+  margin-top: 25px;
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background: #667eea;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #5a67d8;
+}
+
+
+.chart-controls {
+  margin-bottom: 15px;
+}
+
+select {
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+
+.chart-wrapper {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+canvas {
+  width: 100% !important;
+  height: 350px !important;
+}

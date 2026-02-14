@@ -1,12 +1,10 @@
-const express = require("express");
-const router = express.Router();
-
+const router = require("express").Router();
 const {
-  getStudents,
-  updatePerformance,
+  getStudentByRegNo,
+  uploadMarks
 } = require("../controllers/facultyController");
 
-router.get("/students", getStudents);
-router.post("/performance", updatePerformance);
+router.get("/:regNo", getStudentByRegNo);
+router.post("/upload", uploadMarks);
 
 module.exports = router;

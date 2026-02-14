@@ -1,49 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
   <title>Student Dashboard</title>
   <link rel="stylesheet" href="assets/style.css">
-  <!-- Chart.js CDN -->
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="assets/script.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
+
 <body>
-  <h2>Student Dashboard</h2>
 
-  <div class="box" id="studentInfoBox">
-    <!-- Filled by script.js -->
-  </div>
+<div class="container">
 
-  <div class="box" style="max-width:720px; margin-top:18px;">
-    <h3>Enter Marks (for selected semester)</h3>
-    <form id="marksForm" onsubmit="return false;">
-      <label>Semester:
-        <input type="number" id="sem" value="3" min="1" required>
-      </label>
-      <label>Mid1:
-        <input type="number" id="mid1" placeholder="e.g. 18" min="0" required>
-      </label>
-      <label>Mid2:
-        <input type="number" id="mid2" placeholder="e.g. 20" min="0" required>
-      </label>
-      <label>Endsem (if available):
-        <input type="number" id="endsem" placeholder="leave empty if not yet held" min="0">
-      </label>
-      <button id="saveMarksBtn" type="button">Save & Predict</button>
-    </form>
+  <h1>📊 Student Performance Dashboard</h1>
 
-    <div id="predictionBox" style="margin-top:12px;"></div>
-  </div>
+  <div class="card" id="reportArea">
 
-  <div class="box" style="max-width:720px; margin-top:18px;">
-    <h3>CGPA Trend</h3>
-    <canvas id="studentTrendChart" height="160"></canvas>
-  </div>
 
-  <div style="margin-top:14px;">
-    <a href="index.html">← Logout</a>
-  </div>
+    <h2>Your Exam Records</h2>
+    <div id="studentData"></div>
 
-  <script src="assets/script.js"></script>
+
+    <div class="stats">
+      <div class="stat-box">
+        <h3>Mid Sem</h3>
+        <p id="mid">75</p>
+      </div>
+
+      <div class="stat-box">
+        <h3>End Sem</h3>
+        <p id="end">85</p>
+      </div>
+
+      <div class="stat-box highlight">
+        <h3>Predicted CGPA</h3>
+        <p id="cgpa">8.0</p>
+      </div>
+    </div>
+
+  <h2>Generate Performance Graph</h2>
+
+<label>Select Subject:</label>
+<select id="subjectSelect"></select>
+
+<label>Graph Type:</label>
+<select id="chartType">
+  <option value="bar">Bar</option>
+  <option value="line">Line</option>
+  <option value="pie">Pie</option>
+  <option value="doughnut">Doughnut</option>
+</select>
+
+<label>
+  <input type="checkbox" id="includePrediction">
+  Include Predicted Marks
+</label>
+
+<button onclick="generateGraph()">Generate Graph</button>
+
+<div style="width:600px; margin-top:20px;">
+  <canvas id="performanceChart"></canvas>
+</div>
+</div>
+
+  <button class="btn" onclick="downloadPDF()">Download Report</button>
+
+</div>
+
 </body>
 </html>

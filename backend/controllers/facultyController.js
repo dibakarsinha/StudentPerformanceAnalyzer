@@ -1,29 +1,45 @@
 const Student = require("../models/Student");
-const Performance = require("../models/Performance");
 
-exports.getStudents = async (req, res) => {
+
+// Get student by registration number
+exports.getStudentByRegNo = async (req, res) => {
   try {
-    const students = await Student.find();
-    res.json(students);
+    const { regNo } = req.params;
+
+    const student = await Student.findOne({ regNo });
+
+    if (!student)
+      return res.status(404).json({ msg: "Student not found" });
+
+    res.json(student);
+
   } catch (err) {
-    res.status(500).json({ error: "Server error" });
+    res.status(500).json({ msg: "Server error" });
   }
 };
 
-exports.updatePerformance = async (req, res) => {
-  try {
-    const { studentId, subject, score } = req.body;
 
-    const performance = new Performance({
-      studentId,
-      subject,
-      score
+// Upload new marks
+exports.uploadMarks = async (req, res) => {
+  try {
+    const { regNo, mid, end, semester } = req.body;
+
+    const student = await Student.findOne({ regNo });
+
+    if (!student)
+      return res.status(404).json({ msg: "Student not found" });
+
+    student.exams.push({
+      mid,
+      end,
+      semester
     });
 
-    await performance.save();
+    await student.save();
 
-    res.json({ message: "Performance updated!" });
+    res.json({ msg: "Marks uploaded successfully", student });
+
   } catch (err) {
-    res.status(500).json({ error: "Server error" });
+    res.status(500).json({ msg: "Server error" });
   }
 };

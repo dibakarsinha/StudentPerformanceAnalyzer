@@ -1,14 +1,12 @@
-// backend/routes/authRoutes.js
-const express = require("express");
-const router = express.Router();
-const ctl = require("../controllers/authController");
+const router = require("express").Router();
+const {
+  registerStudent,
+  loginStudent,
+  loginFaculty
+} = require("../controllers/authController");
 
-// Student
-router.post("/student/register", ctl.registerStudent);
-router.post("/student/login", ctl.loginStudent);
-
-// Faculty
-router.post("/faculty/register", ctl.registerFaculty);
-router.post("/faculty/login", ctl.loginFaculty);
+router.post("/register", registerStudent);
+router.post("/student-login", loginStudent);
+router.post("/faculty-login", loginFaculty);
 
 module.exports = router;

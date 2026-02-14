@@ -1,34 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8" />
   <title>Faculty Dashboard</title>
-  <link rel="stylesheet" href="assets/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <h2>Faculty Dashboard</h2>
 
-  <div class="box" id="facultyInfoBox">
-    <!-- Filled by script.js -->
-  </div>
+<h2>Faculty Dashboard</h2>
 
-  <div class="box" style="max-width:720px;">
-    <h3>Class Summary</h3>
-    <div id="classSummary"></div>
+<h3>Select Student</h3>
 
-    <h4 style="margin-top:10px;">Select Student</h4>
-    <select id="facultyStudentSelect"></select>
-    <div id="selectedStudentInfo" style="margin-top:10px;"></div>
+<input type="text" id="regNo" placeholder="Enter Registration Number">
+<button onclick="fetchStudent()">Load Student</button>
 
-    <h4 style="margin-top:12px;">Selected Student Trend</h4>
-    <canvas id="facultyStudentChart" height="160"></canvas>
-  </div>
+<hr>
 
-  <div style="margin-top:14px;">
-    <a href="index.html">← Logout</a>
-  </div>
+<div id="studentData"></div>
 
-  <script src="assets/script.js"></script>
+<hr>
+
+<h3>Upload New Marks</h3>
+
+<input type="number" id="semester" placeholder="Semester">
+<input type="number" id="mid" placeholder="Mid Marks">
+<input type="number" id="end" placeholder="End Marks">
+
+<button onclick="uploadMarks()">Upload</button>
+
+<script src="assets/script.js"></script>
+
 </body>
 </html>

@@ -1,11 +1,10 @@
-// backend/models/Faculty.js
 const mongoose = require("mongoose");
 
 const facultySchema = new mongoose.Schema({
-  name: { type: String, required: true, trim: true },
-  email: { type: String, unique: true, required: true, lowercase: true, trim: true },
-  password: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now }
+  name: String,
+  email: { type: String, unique: true },
+  password: String,
+  role: { type: String, default: "faculty" }
 });
 
 module.exports = mongoose.model("Faculty", facultySchema);
